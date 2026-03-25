@@ -8,8 +8,14 @@ function UserDetails() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetchUser();
-  }, []);
+  const fetchUser = async () => {
+    const data = await getUsers();
+    const selectedUser = data.find((u) => u.id === parseInt(id));
+    setUser(selectedUser);
+  };
+
+  fetchUser();
+  }, [id]);
 
   const fetchUser = async () => {
     const data = await getUsers();
