@@ -8,20 +8,14 @@ function UserDetails() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-  const fetchUser = async () => {
-    const data = await getUsers();
-    const selectedUser = data.find((u) => u.id === parseInt(id));
-    setUser(selectedUser);
-  };
+    const fetchUser = async () => {
+      const data = await getUsers();
+      const selectedUser = data.find((u) => u.id === parseInt(id));
+      setUser(selectedUser);
+    };
 
-  fetchUser();
+    fetchUser();
   }, [id]);
-
-  const fetchUser = async () => {
-    const data = await getUsers();
-    const selectedUser = data.find((u) => u.id === parseInt(id));
-    setUser(selectedUser);
-  };
 
   if (!user) return <p>Loading...</p>;
 
